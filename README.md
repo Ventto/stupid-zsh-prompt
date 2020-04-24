@@ -1,7 +1,9 @@
-my-zsh-prompt
-=============
+stupid-zsh-prompt
+=================
 
-*"My quick 200-lines zsh prompt written at home"*
+*"My quick 200-lines zsh prompt written with love"*
+
+![prompt screenshot](/images/screenshot.png)
 
 # Setup
 
