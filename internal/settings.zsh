@@ -2,12 +2,12 @@
 
 typeset -g MYPROMPT_LEFT_PROMPT_ELEMENTS=(
     # ===============[ Line #1 ]===============
-    cmd_timer       # command execution time
     date            # current date
     cdir            # current directory
     vcs             # git status
     # ===============[ Line #2 ]===============
     newline         # \n
+    cmd_timer       # command execution time
     cmd_status      # command status
 )
 
