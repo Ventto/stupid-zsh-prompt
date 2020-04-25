@@ -18,7 +18,17 @@ typeset -g MYPROMPT_LEFT_PROMPT_ELEMENTS=(
 typeset -g MYPROMPT_FIRSTLINE_PREFIX_FMT='╭─'
 typeset -g MYPROMPT_LASTLINE_PREFIX_FMT='╰─'
 typeset -g MYPROMPT_DATE_FMT='%D{%H:%M}'
-typeset -g MYPROMPT_CDIR_FMT='  %~'
+
+##
+# Description:
+#
+#   Ex: typeset -g MYPROMPT_CDIR_FMT='  %(4~|%-1~/…/%3~|%~)'
+#
+# This checks, if the path is at least 4 elements long (%(4~|true|false)) and,
+# if true, prints the first element (%-1~), some dots (/…/) and
+# the last 3 elements otherwise the full path is printed %~.
+#
+typeset -g MYPROMPT_CDIR_FMT='  %(4~|%-1~/…/%3~|%~)'
 typeset -g MYPROMPT_CMD_STATUS_SUCCESS_FMT=''
 typeset -g MYPROMPT_CMD_STATUS_FAILURE_FMT=''
 typeset -g MYPROMPT_CMD_TIMER_WAIT_FMT=' '
