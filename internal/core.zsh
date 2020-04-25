@@ -33,9 +33,9 @@ function _mypt_block() {
 }
 
 function _mypt_prompt_cmd_status() {
-    local _pipestatus="$2"
+    local _pipestatus="$1"
 
-    local rc="$(echo "$_pipestatus" | awk '{print $NF}')"
+    local rc="${_pipestatus##*' '}"
 
     if [ "$rc" -eq 0 ]; then
         local cmd_state_fmt="$MYPROMPT_CMD_STATUS_SUCCESS_FMT"
@@ -184,11 +184,10 @@ function _mypt_precmd() {
             fi
         fi
 
-        # Same function name but not parameters
         case $elm in
             newline)    _mypt_prompt_$elm "$last_colors";;
-            cmd_status) _mypt_prompt_$elm "middle" "$_pipestatus";;
-            *) _mypt_prompt_$elm "middle" "";;
+            cmd_status) _mypt_prompt_$elm "$_pipestatus";;
+            *) _mypt_prompt_$elm;;
         esac
 
         ##
