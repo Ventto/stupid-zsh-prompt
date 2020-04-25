@@ -154,7 +154,7 @@ function _mypt_complete_line() {
 }
 
 function _mypt_precmd() {
-    local _pipestatus="$1"
+    local _pipestatus="$pipestatus"
 
     # Stop the command timer as soon as possible avoiding the shell overhead
     _mypt_cmd_timer_stop
@@ -217,11 +217,9 @@ function _mypt_preexec() {
     _mypt_cmd_timer=$(($(date +%s%0N)/1000000))
 }
 
-function precmd() {
-    _mypt_precmd "$pipestatus"
+function _mypt_clean() {
     unset _mypt_cmd_timer
 }
 
-function preexec() {
-    _mypt_preexec
-}
+precmd_functions=($precmd_functions _mypt_precmd _mypt_clean)
+preexec_functions=($precmd_functions _mypt_preexec)
