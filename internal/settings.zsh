@@ -41,7 +41,6 @@ typeset -g MYPROMPT_SEPARATOR_RIGHT_FMT=''
 #                   Colors
 # ============================================
 
-
 typeset -g MYPROMPT_CMD_TIMER_COLORS=( yellow black )
 typeset -g MYPROMPT_DATE_COLORS=( blue black )
 typeset -g MYPROMPT_CDIR_COLORS=( white black)
