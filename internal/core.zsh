@@ -147,6 +147,9 @@ function _mypt_cmd_timer_stop() {
 }
 
 function _mypt_complete_line() {
+    if [ "$1" -le 0 ]; then
+        return
+    fi
     for i in {1.."$1"}; do echo -n '─'; done
 }
 
