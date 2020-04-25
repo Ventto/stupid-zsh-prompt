@@ -58,33 +58,34 @@ function _mypt_prompt_date() {
 
 function _mypt_prompt_cmd_timer() {
     function time_ms_to_human_readable() {
-        local val="$1"
+        local _time="$1"
 
-        if [ "$val" -ge 1000 ]; then
-            val=$((val / 1000))
-            if [ "$val" -ge 60 ]; then
-                val=$((val / 60))
-                if [ "$val" -ge 60 ]; then
-                    val=$((val / 60))
-                    if [ "$val" -ge 24 ]; then
-                        val=$((val / 24))
-                        printf '%s' "${val}d "
-                        time_ms_to_human_readable $(($1-($val*24*60*60*1000)))
+        local tmp
+        while [ "$_time" -ge 1000 ]; do
+            tmp="$_time"
+            tmp=$((tmp / 1000))
+            if [ "$tmp" -ge 60 ]; then
+                tmp=$((tmp / 60))
+                if [ "$tmp" -ge 60 ]; then
+                    tmp=$((tmp / 60))
+                    if [ "$tmp" -ge 24 ]; then
+                        tmp=$((tmp / 24))
+                        echo -n "${tmp}d "
+                        _time=$(($_time-($tmp*86400000)))
                     else
-                        printf '%s' "${val}h "
-                        time_ms_to_human_readable $(($1-($val*60*60*1000)))
+                        echo -n "${tmp}h "
+                        _time=$(($_time-($tmp*3600000)))
                     fi
                 else
-                    printf '%s' "${val}m "
-                    time_ms_to_human_readable $(($1-($val*60*1000)))
+                    echo -n "${tmp}m "
+                    _time=$(($_time-($tmp*60000)))
                 fi
             else
-                printf '%s' "${val}s "
-                time_ms_to_human_readable $(($1-($val*1000)))
+                echo -n "${tmp}s "
+                _time=$(($_time-($tmp*1000)))
             fi
-        else
-            printf '%s' "${val}ms "
-        fi
+        done
+        echo -n "${_time}ms "
     }
     if [ -n "$_mypt_cmd_timer" ]; then
         local cmd_time="$(time_ms_to_human_readable "$_mypt_cmd_timer")"
