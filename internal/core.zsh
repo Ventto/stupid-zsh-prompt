@@ -146,9 +146,7 @@ function _mypt_cmd_timer_stop() {
 }
 
 function _mypt_complete_line() {
-    for i in $(seq $1); do
-        echo -n '─'
-    done
+    for i in {1.."$1"}; do echo -n '─'; done
 }
 
 function _mypt_precmd() {
