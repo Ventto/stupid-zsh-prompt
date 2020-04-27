@@ -1,7 +1,7 @@
 stupid-zsh-prompt
 =================
 
-*"My quick 200-lines zsh prompt written with love"*
+*"A quick 200-lines zsh prompt written with love"*
 
 ![prompt screenshot](/images/screenshot.png)
 
@@ -10,5 +10,5 @@ stupid-zsh-prompt
 Add the following line into your `.zshrc`:
 
 ```bash
-source "<path_to>/myprompt.zsh"
+source "<path_to>/stupid-zsh-prompt.zsh"
 ```
