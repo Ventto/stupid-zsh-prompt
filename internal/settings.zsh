@@ -22,13 +22,15 @@ typeset -g SZP_DATE_FMT='%D{%H:%M}'
 ##
 # Description:
 #
-#   Ex: typeset -g SZP_CDIR_FMT='  %(4~|%-1~/…/%3~|%~)'
+#   Ex: typeset -g SZP_CDIR_FMT='  %(5~|%-1~/…/%3~|%~)'
 #
-# This checks, if the path is at least 4 elements long (%(4~|true|false)) and,
+# This checks, if the path is at least 5 elements long (%(5~|true|false)) and,
 # if true, prints the first element (%-1~), some dots (/…/) and
 # the last 3 elements otherwise the full path is printed %~.
 #
-typeset -g SZP_CDIR_FMT='  %(4~|%-1~/…/%3~|%~)'
+# N.B: `/home/user` counts for 2.
+#
+typeset -g SZP_CDIR_FMT='  %(5~|%-1~/…/%3~|%~)'
 typeset -g SZP_CMD_STATUS_SUCCESS_FMT=''
 typeset -g SZP_CMD_STATUS_FAILURE_FMT=''
 typeset -g SZP_CMD_TIMER_WAIT_FMT=' '
