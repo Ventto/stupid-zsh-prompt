@@ -221,5 +221,23 @@ function _szp_clean() {
     unset _szp_cmd_timer
 }
 
+function clear-screen-reset-prompt {
+  # clear screen
+  clear
+  # clear buffer. The following sequence code is available for xterm.
+  #printf '\e[3J'
+  # Reset the prompt (new colum-completion calculation)
+  _szp_precmd 0
+  # .reset-prompt: bypass the zsh-syntax-highlighting wrapper
+  # https://github.com/sorin-ionescu/prezto/issues/1026
+  # https://github.com/zsh-users/zsh-autosuggestions/issues/107#issuecomment-183824034
+  # -R: redisplay the prompt to avoid old prompts being eaten up
+  # https://github.com/Powerlevel9k/powerlevel9k/pull/1176#discussion_r299303453
+  zle .reset-prompt && zle -R
+}
+
+zle -N clear-screen-reset-prompt
+bindkey '^L' clear-screen-reset-prompt
+
 precmd_functions=($precmd_functions _szp_precmd _szp_clean)
 preexec_functions=($precmd_functions _szp_preexec)
