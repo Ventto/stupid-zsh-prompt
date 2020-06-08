@@ -112,6 +112,14 @@ function _szp_prompt_vcs() {
     _szp_count " ${vcs_info_msg_0_} "
 }
 
+function _szp_prompt_python_venv() {
+    [ -z "${VIRTUAL_ENV}" ] && return
+
+    local text=" venv "
+    _szp_block  "${text}" "$SZP_PYTHON_VENV_COLORS[1]" "$SZP_PYTHON_VENV_COLORS[2]"
+    _szp_count "${text}"
+}
+
 function _szp_prompt_eol() {
     local _last_colors=( "$1" )
 

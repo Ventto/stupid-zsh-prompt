@@ -5,6 +5,7 @@ typeset -g SZP_LEFT_PROMPT_ELEMENTS=(
     date            # current date
     cdir            # current directory
     vcs             # git status
+    python_venv
     # ===============[ Line #2 ]===============
     newline         # \n
     cmd_timer       # command execution time
@@ -48,6 +49,7 @@ typeset -g SZP_DATE_COLORS=( blue black )
 typeset -g SZP_CDIR_COLORS=( white black)
 typeset -g SZP_VCS_COLORS=( yellow black )
 typeset -g SZP_CMD_STATUS_COLORS=( green black )
+typeset -g SZP_PYTHON_VENV_COLORS=( yellow black )
 
 # ============================================
 #                 Visibility
